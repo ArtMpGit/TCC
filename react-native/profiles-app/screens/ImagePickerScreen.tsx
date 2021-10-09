@@ -6,9 +6,7 @@ import { CameraOptions } from 'react-native-image-picker';
 import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 
 const TabOneScreen = () => {
-  const [imageUri, setImageUri] = React.useState({
-    uri: 'https://t4.ftcdn.net/jpg/02/07/87/79/360_F_207877921_BtG6ZKAVvtLyc5GWpBNEIlIxsffTtWkv.jpg'
-  });
+  const [imageUri, setImageUri] = React.useState({});
 
   const openCamera = (openCamera: boolean): void => {
     const selectionMethod = openCamera ? launchCamera : launchImageLibrary;
@@ -30,7 +28,8 @@ const TabOneScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Image style={styles.image} source={imageUri} />
+      <Image style={styles.image}
+        source={Object.keys(imageUri).length > 0 ? imageUri : require('../assets/images/placeholder-image.jpg')} />
       <View style={styles.buttonsContainer}>
         <Button title={'Abrir câmera'} onPress={() => openCamera(true)} />
         <Button title={'Abrir galeria'} onPress={() => openCamera(false)} />

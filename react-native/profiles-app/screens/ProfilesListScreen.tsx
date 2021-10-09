@@ -21,7 +21,8 @@ const ProfilesListScreen = () => {
       <FlatList
         style={styles.listContainer}
         data={profilesList}
-        renderItem={({ item, index }) => <ProfileCard user={item} key={`${item.login}${index}`} />}
+        renderItem={({ item }) => <ProfileCard user={item} />}
+        keyExtractor={(item, index) => `${item.login}${index}`}
       />
     </View>
   );
