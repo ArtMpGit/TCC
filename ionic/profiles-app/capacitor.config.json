@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "profiles-app",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

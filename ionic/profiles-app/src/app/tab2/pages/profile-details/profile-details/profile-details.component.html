@@ -1,0 +1,84 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            {{ user?.login }}
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+    <div class="image-container">
+        <img [src]="user?.avatar_url" alt="">
+    </div>
+
+    <ion-grid>
+        <ion-row>
+            <!-- NOME -->
+            <ion-col size="5" class="info-key">
+                Nome:
+            </ion-col>
+            <ion-col size="6">
+                {{ user?.name }}
+            </ion-col>
+
+            <!-- QUANTIDADE DE SEGUIDORES -->
+            <ion-col size="5" class="info-key">
+                Qtd. seguidores:
+            </ion-col>
+            <ion-col size="6">
+                {{ user?.followers }}
+            </ion-col>
+
+            <!-- SEGUINDO -->
+            <ion-col size="5" class="info-key">
+                Seguindo:
+            </ion-col>
+            <ion-col size="6">
+                {{ user?.following }}
+            </ion-col>
+
+            <!-- QUANTIDADE DE REPOSITÓRIOS PÚBLICOS -->
+            <ion-col size="5" class="info-key">
+                Qtd. Repositórios:
+            </ion-col>
+            <ion-col size="6">
+                {{ user?.public_repos }}
+            </ion-col>
+
+
+            <!-- LOCALIDADE -->
+            <ng-container *ngIf="user?.location">
+                <ion-col size="5" class="info-key">
+                    Localidade:
+                </ion-col>
+                <ion-col size="6">
+                    {{ user?.location }}
+                </ion-col>
+            </ng-container>
+
+            <!-- BIO -->
+            <ng-container *ngIf="user?.bio">
+                <ion-col size="5" class="info-key">
+                    Bio:
+                </ion-col>
+                <ion-col size="6">
+                    {{ user?.bio }}
+                </ion-col>
+            </ng-container>
+
+            <!-- DATA DE CRIAÇÃO -->
+            <ion-col size="5" class="info-key">
+                Criado em:
+            </ion-col>
+            <ion-col size="6">
+                {{ user?.created_at | date }}
+            </ion-col>
+
+        </ion-row>
+    </ion-grid>
+
+</ion-content>

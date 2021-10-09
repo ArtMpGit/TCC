@@ -1,0 +1,28 @@
+@import '../../../../theme/variables.scss';
+img {
+    border-radius: 50%;
+}
+
+ion-row {
+    margin: 1rem;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+ion-col {
+    padding-left: 1em;
+}
+
+.user-name {
+    font-size: large;
+    text-transform: capitalize;
+}
+
+.details-text {
+    color: #FE5376;
+}
+
+.image-container {
+    display: flex;
+    align-items: center;
+}

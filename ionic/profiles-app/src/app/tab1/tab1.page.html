@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-title>
+            Câmera
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+    <img [src]="imagePath" alt="" *ngIf="imagePath;else noImage" />
+    <ng-template #noImage>
+        <img src="assets/images/empty.jpg" alt="empty-image">
+    </ng-template>
+
+    <ion-button (click)="selectImage()">
+        Selecionar imagem
+    </ion-button>
+
+
+
+</ion-content>
