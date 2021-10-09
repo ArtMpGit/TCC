@@ -1,29 +1,22 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
 import { StyleSheet, PermissionsAndroid } from 'react-native';
-
-import MapView from 'react-native-maps';
+import MapView, { Region } from 'react-native-maps';
 import Geolocation from '@react-native-community/geolocation';
-import { Text, View } from '../components/Themed';
+
+const initialRegion = {
+    latitude: 15,
+    longitude: -87,
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421,
+}
 
 const UserLocationScreen = () => {
-    const [userLocation, setUserLocation] = useState();
-
-    useEffect(() => {
-        requestLocationPermission();
-    }, []);
+    const [initialLocation] = React.useState(initialRegion);
+    const mapRef = React.useRef({} as MapView);
 
     const requestLocationPermission = async (): Promise<void> => {
         const granted = await PermissionsAndroid.request(
-            PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
-            {
-                title: "Permissão para acessar sua localização",
-                message: "Permite que a aplicação acesse sua localização atual?",
-                buttonNeutral: "Pergunte-me depois",
-                buttonNegative: "Cancelar",
-                buttonPositive: "OK"
-            }
-        );
+            PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION);
 
         (granted === PermissionsAndroid.RESULTS.GRANTED)
             ? getUserPosition()
@@ -31,22 +24,22 @@ const UserLocationScreen = () => {
     }
 
     const getUserPosition = (): void =>
-        Geolocation.getCurrentPosition((response) => console.log(response), err => console.log(err),
+        Geolocation.getCurrentPosition(({ coords }) => {
+            const { latitude, longitude } = coords;
+            mapRef.current!.animateToRegion({ ...initialLocation, latitude, longitude })
+            console.log(coords)
+        }, err => console.log(err),
             {
                 enableHighAccuracy: false,
-                timeout: 50000,
-                maximumAge: 10000
+                timeout: 1000,
             });
 
     return (
         <MapView
             style={styles.map}
-            initialRegion={{
-                latitude: 37.78825,
-                longitude: -122.4324,
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421,
-            }}
+            initialRegion={initialLocation}
+            onMapReady={requestLocationPermission}
+            ref={mapRef}
         />
     );
 }
