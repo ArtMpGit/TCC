@@ -1,4 +1,4 @@
-package com.example.profilesapp.ui.home;
+package com.example.profilesapp.ui.camera;
 
 import android.Manifest;
 import android.app.Activity;
@@ -8,49 +8,42 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.profilesapp.R;
 
-import java.io.File;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class HomeFragment extends Fragment {
+public class CameraFragment extends Fragment {
 
     public static final int CAMERA_REQUEST_CODE = 102;
     public static final int CAMERA_PERMISSION_CODE = 101;
     public static final int GALLERY_REQUEST_CODE = 105;
 
-    private HomeViewModel homeViewModel;
+    private CameraViewModel cameraViewModel;
     ImageView selectedImage;
     Button cameraBtn, galleryBtn;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_home, container, false);
+        cameraViewModel =
+                new ViewModelProvider(this).get(CameraViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_camera, container, false);
 
         selectedImage = root.findViewById(R.id.selectedImage);
         cameraBtn = root.findViewById(R.id.cameraBtn);
