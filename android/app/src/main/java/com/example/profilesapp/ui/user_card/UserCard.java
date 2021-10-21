@@ -25,7 +25,8 @@ public class UserCard extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.user_card_fragment, container, false);
+        View root = inflater.inflate(R.layout.user_card_fragment, container, false);
+        return root;
     }
 
     @Override

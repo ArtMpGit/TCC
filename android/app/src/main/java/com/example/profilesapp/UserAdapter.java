@@ -1,6 +1,7 @@
 package com.example.profilesapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,8 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.profilesapp.ui.user_detail.UserDetailActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -37,6 +41,12 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         final User user = users.get(position);
         Picasso.get().load(user.getAvatar_url()).into(holder.imageView);
         holder.userNameTextView.setText(user.getLogin());
+
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, UserDetailActivity.class);
+            intent.putExtra("userName", user.getLogin());
+            context.startActivity(intent);
+        });
     }
 
     @Override

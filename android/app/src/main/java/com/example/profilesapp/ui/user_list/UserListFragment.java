@@ -69,14 +69,6 @@ public class UserListFragment extends Fragment {
                             recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
                         }
                     });
-
-                    MainActivity main = (MainActivity) getActivity();
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-
-                        }
-                    });
                 }
             }
         });

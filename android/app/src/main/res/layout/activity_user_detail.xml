@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.user_detail.UserDetailActivity">
+
+    <ImageView
+        android:id="@+id/userDetailAvatar"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:id="@+id/userDetailName"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_marginTop="260dp"/>
+
+    <TextView
+        android:id="@+id/userDetailFollowers"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_marginTop="290dp"/>
+
+    <TextView
+        android:id="@+id/userDetailFollowing"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_marginTop="320dp"/>
+
+    <TextView
+        android:id="@+id/userDetailRepos"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_marginTop="350dp"/>
+
+    <TextView
+        android:id="@+id/userDetailCreation"
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_marginTop="380dp"/>
+
+</FrameLayout>
