@@ -16,8 +16,7 @@
         app:layout_constraintBottom_toTopOf="@+id/cameraBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/cameraBtn"

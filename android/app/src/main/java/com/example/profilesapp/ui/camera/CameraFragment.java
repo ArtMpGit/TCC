@@ -6,6 +6,7 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -26,6 +27,8 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.profilesapp.R;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -48,6 +51,8 @@ public class CameraFragment extends Fragment {
         selectedImage = root.findViewById(R.id.selectedImage);
         cameraBtn = root.findViewById(R.id.cameraBtn);
         galleryBtn = root.findViewById(R.id.galleryButton);
+
+        loadDefaultImage();
 
         cameraBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,6 +116,20 @@ public class CameraFragment extends Fragment {
         ContentResolver c = getActivity().getContentResolver();
         MimeTypeMap mime = MimeTypeMap.getSingleton();
         return mime.getExtensionFromMimeType(c.getType(contentUri));
+    }
+
+    public void loadDefaultImage() {
+        try
+        {
+            InputStream ims = getContext().getAssets().open("empty.jpg");
+            Drawable d = Drawable.createFromStream(ims, null);
+            selectedImage.setImageDrawable(d);
+            ims.close();
+        }
+        catch(IOException ex)
+        {
+            return;
+        }
     }
 
 
