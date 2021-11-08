@@ -98,7 +98,7 @@ function UserLocationNavigator() {
       <UserLocationStack.Screen
         name="UserLocationScreen"
         component={UserLocationScreen}
-        options={{ headerTitle: 'Geolocalização' }}
+        options={{ headerTitle: 'Mapa' }}
       />
     </UserLocationStack.Navigator>
   );
